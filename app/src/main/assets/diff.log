@@ -1,0 +1,21 @@
++++ b/app/src/main/java/com/yangdai/opennote/data/local/dao/FolderDao.kt
+@@ -15,7 +15,7 @@ interface FolderDao {
+     @Query("SELECT * FROM FOLDERENTITY")
+     fun getAllFolders(): Flow<List<FolderEntity>>
+ 
+-    @Insert(onConflict = OnConflictStrategy.REPLACE)
++    @Insert(onConflict = OnConflictStrategy.IGNORE)
+     suspend fun insertFolder(folderEntity: FolderEntity)
+ 
+     
+index d60ccee..ff4661c 100644
+--- a/app/src/main/java/com/yangdai/opennote/data/local/dao/NoteDao.kt
++++ b/app/src/main/java/com/yangdai/opennote/data/local/dao/NoteDao.kt
+@@ -32,7 +32,7 @@ interface NoteDao {
+     )
+     suspend fun getNoteById(id: Long): NoteEntity?
+ 
+-    @Insert(onConflict = OnConflictStrategy.REPLACE)
++    @Insert(onConflict = OnConflictStrategy.IGNORE)
+     suspend fun insertNote(noteEntity: NoteEntity): Long
+ 
